@@ -1,0 +1,35 @@
+.header-container {}
+
+.header-container nav {
+    background: rgb(65, 64, 66);
+}
+
+.header-container nav img {}
+
+.header-container nav ul {
+    background: rgb(65, 64, 66);
+
+}
+
+.header-container nav ul a {
+    display: inline-block;
+    font-size: 16px;
+    margin: 0 8px;
+    padding: 0 10px;
+}
+
+
+.navLink {}
+
+.activeLink {
+    border-bottom: 2px solid white;
+}
+
+@media (max-width:600px) {
+    .header-container nav ul a {
+        padding: 5px 0;
+        width: 50%;
+        text-align: left;
+        margin: 0 auto;
+    }
+}
