@@ -7,11 +7,12 @@ import { MdOutlineClose } from 'react-icons/md';
 import { signOut } from 'firebase/auth';
 import toast from 'react-hot-toast';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init'
 
 const Header = () => {
     let [toggle, setToggle] = useState(false);
 
-    // let [user] = useAuthState(auth)
+    let [user] = useAuthState(auth)
     let navigat = useNavigate();
 
     // console.log(user);
