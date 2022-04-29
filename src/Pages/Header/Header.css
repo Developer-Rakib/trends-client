@@ -8,7 +8,7 @@
 
 .header-container nav ul {
     background: rgb(65, 64, 66);
-
+    border-radius: 5px;
 }
 
 .header-container nav ul a {

@@ -6,6 +6,8 @@ import Login from './Pages/Login/Login'
 import SignUp from './Pages/SignUp/SignUp'
 import AddItems from './Pages/AddItems/AddItems'
 import Footer from './Pages/Footer/Footer'
+import Blogs from './Pages/Blogs/Blogs';
+import MyItems from './Pages/MyItems/MyItems';
 
 function App() {
   return (
@@ -16,6 +18,9 @@ function App() {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/SignUp' element={<SignUp></SignUp>}></Route>
         <Route path='/addItems' element={<AddItems></AddItems>}></Route>
+        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
+        <Route path='/myItems' element={<MyItems></MyItems>}></Route>
+        <Route path='/myItems' element={<MyItems></MyItems>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
