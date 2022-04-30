@@ -9,6 +9,7 @@ import Footer from './Pages/Footer/Footer'
 import Blogs from './Pages/Blogs/Blogs';
 import MyItems from './Pages/MyItems/MyItems';
 import ManageItems from './Pages/ManageItems/ManageItems';
+import InventoryDetails from './Pages/InventoryDetails/InventoryDetails';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/myItems' element={<MyItems></MyItems>}></Route>
         <Route path='/manageItems' element={<ManageItems></ManageItems>}></Route>
+        <Route path='/inventoryDetails' element={<InventoryDetails></InventoryDetails>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
