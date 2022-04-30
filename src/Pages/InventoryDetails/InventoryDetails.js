@@ -5,14 +5,54 @@ import { useParams } from 'react-router-dom';
 
 const InventoryDetails = () => {
     const { id } = useParams();
-    const [stock, setStock] = useState(0);
     const [cloth, setCloth] = useState({});
+    const [stock, setStock] = useState();
+    // const [udatedCloth, setUpdetedCloth] = useState({});
     // console.log(id);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const quantity = e.target.stock.value;
+        const updateCloth = {
+            _id: cloth?._id,
+            name: cloth?.name,
+            email: "",
+            price: cloth?.price,
+            description: cloth?.description,
+            img: cloth?.img,
+            quantity: quantity,
+            supplierName: cloth?.supplierName,
+            sold: `${quantity < 1 ? "sold out" : "sold"}`
+        }
+        setCloth(updateCloth)
+        e.target.reset()
+    }
+
+    const handleDeliver = () => {
+        // setStock(stock + 1)
+        console.log(stock);
+    }
+
+
+
     useEffect(() => {
         axios.get(`http://localhost:5000/cloth/${id}`)
-            .then(data => setCloth(data.data))
+            .then(data => {
+                setCloth(data.data);
+                setStock(parseInt(data.data.quantity))
+            })
     }, [id])
-    console.log(cloth);
+
+
+    const { _id, ...rest } = cloth;
+    useEffect(() => {
+        (async () => {
+            const { data } = await axios.put(`http://localhost:5000/cloth/${id}`, rest)
+            console.log(data);
+        })()
+    }, [id, rest])
+
+    // console.log(cloth);
 
 
     return (
@@ -29,7 +69,7 @@ const InventoryDetails = () => {
                     <div className='flex justify-between pr-3'>
                         <h3 className="text-2xl font-semibold">${cloth?.price}</h3>
                         <button
-
+                            onClick={handleDeliver}
                             type="button"
                             class="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
                         >Delivered</button>
@@ -39,15 +79,25 @@ const InventoryDetails = () => {
             </div>
             <div className='md:w-4/12'>
 
-                <form class="flex items-center w-10/12 mx-auto">
+                <form onSubmit={handleSubmit} class="flex items-center w-10/12 mx-auto">
                     <div class="relative w-52">
                         <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                             <MdOutlineAddCircle class="w-5 h-5 text-gray-500 dark:text-gray-400" >
                             </MdOutlineAddCircle>
                         </div>
-                        <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md w-full focus:ring-blue-500 focus:border-blue-500 block  pl-10 px-2 py-2  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Add Stock" required="" />
+                        <input
+                            type="text"
+                            name='stock'
+                            id="simple-search"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md w-full focus:ring-blue-500 focus:border-blue-500 block  pl-10 px-2 py-2  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Add Stock"
+                            required />
                     </div>
-                    <button type="button" class="inline-block px-6 py-3 ml-2 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Add Stock</button>
+                    <input
+                        type="submit"
+                        class="inline-block px-6 py-3 ml-2 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                        value={"Add Stock"}
+                    />
                 </form>
 
             </div>
