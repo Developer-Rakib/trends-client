@@ -6,15 +6,15 @@ import { useParams } from 'react-router-dom';
 const InventoryDetails = () => {
     const { id } = useParams();
     const [cloth, setCloth] = useState({});
-    const [stock, setStock] = useState();
+    const [stock, setStock] = useState(0);
     // const [udatedCloth, setUpdetedCloth] = useState({});
     // console.log(id);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const quantity = e.target.stock.value;
+        // setStock(quantity)
         const updateCloth = {
-            _id: cloth?._id,
             name: cloth?.name,
             email: "",
             price: cloth?.price,
@@ -25,12 +25,30 @@ const InventoryDetails = () => {
             sold: `${quantity < 1 ? "sold out" : "sold"}`
         }
         setCloth(updateCloth)
+
         e.target.reset()
     }
 
     const handleDeliver = () => {
         // setStock(stock + 1)
-        console.log(stock);
+        if (parseInt(cloth?.quantity) < 1) {
+
+            return;
+        }
+        let quantity = parseInt(cloth?.quantity) - 1;
+        const lessStock = {
+            name: cloth?.name,
+            email: "",
+            price: cloth?.price,
+            description: cloth?.description,
+            img: cloth?.img,
+            quantity: quantity,
+            supplierName: cloth?.supplierName,
+            sold: `${quantity < 1 ? "sold out" : "sold"}`
+        }
+        console.log(lessStock);
+
+        setCloth(lessStock)
     }
 
 
@@ -41,18 +59,18 @@ const InventoryDetails = () => {
                 setCloth(data.data);
                 setStock(parseInt(data.data.quantity))
             })
-    }, [id])
+    }, [])
 
 
     const { _id, ...rest } = cloth;
     useEffect(() => {
         (async () => {
             const { data } = await axios.put(`http://localhost:5000/cloth/${id}`, rest)
-            console.log(data);
+            // console.log(data);
         })()
     }, [id, rest])
 
-    // console.log(cloth);
+    // console.log(rest);
 
 
     return (
@@ -64,7 +82,7 @@ const InventoryDetails = () => {
                     <p className="text-gray-700 text-base mb-4">{cloth?.description}</p>
                     <p>Stock : {cloth?.quantity}</p>
                     <p>Supplier : {cloth?.supplierName}</p>
-                    <p>id : {cloth?._id}</p>
+                    <p>id : {id}</p>
                     <p>Sold : {cloth?.sold}</p>
                     <div className='flex justify-between pr-3'>
                         <h3 className="text-2xl font-semibold">${cloth?.price}</h3>
