@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link as button, Link } from 'react-router-dom';
-import logo2 from '../../img/images__1_-removebg-preview.png'
+import logo3 from '../../img/images__3_-removebg-preview.png'
 
 const Login = () => {
     return (
@@ -9,7 +9,7 @@ const Login = () => {
                 <div>
                     <img
                         className="mx-auto h-20 w-auto"
-                        src={logo2}
+                        src={logo3}
                         alt="Workflow"
                     />
                     <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>

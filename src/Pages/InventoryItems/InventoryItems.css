@@ -1,0 +1,17 @@
+.inventory-container {
+    width: 350px;
+}
+
+.inventory-container h5 {}
+
+.inventory-container img {
+    height: 270px;
+
+    margin: 0 auto;
+    margin-top: 18px;
+}
+
+.inventory-container p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+}
