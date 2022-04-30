@@ -5,7 +5,7 @@ import Slider from '../Slider/Slider';
 
 const Home = () => {
     let [cloths, setCloths] = useCloths();
-    console.log(cloths);
+    // console.log(cloths);
     return (
         <div>
             <Slider></Slider>

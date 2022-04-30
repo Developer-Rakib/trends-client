@@ -1,23 +1,38 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { MdOutlineAddCircle } from 'react-icons/md';
+import { useParams } from 'react-router-dom';
 
 const InventoryDetails = () => {
+    const { id } = useParams();
+    const [stock, setStock] = useState(0);
+    const [cloth, setCloth] = useState({});
+    // console.log(id);
+    useEffect(() => {
+        axios.get(`http://localhost:5000/cloth/${id}`)
+            .then(data => setCloth(data.data))
+    }, [id])
+    console.log(cloth);
+
+
     return (
         <div className="flex justify-evenly py-20 container mx-auto">
             <div className="flex flex-col p-5 md:flex-row md:w-8/12  text-left rounded-lg bg-white shadow-lg">
-                <img className=" w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg" src="https://res.cloudinary.com/moresport/image/upload/c_fill,f_auto,q_auto:good,w_690/v1575961299/uploads/assets/1155595-BLACK-2-KzP.jpg" alt="" />
+                <img className=" w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg" src={cloth?.img} alt="" />
                 <div className="p-6 flex flex-col justify-start">
-                    <h5 className="text-gray-900 text-xl font-medium mb-2">Under Armour Men's Rival Fleece Full Zip Hoodie</h5>
-                    <p className="text-gray-700 text-base mb-4">
-                        Constructed with a comfortable knit fabric, this short sleeve top is functional for various running workout regimens. The shirt's material is also practical for managing moisture and helping you keep dry during your training. It's also constructed with recycled materials to support a more sustainable design approach.
-                    </p>
-                    <p>Stock : {'12'}</p>
-                    <p>Supplier : {'MILL Germents'}</p>
-                    <p>id : {'626c1c02b06af218a6fb1415'}</p>
-                    <p>Sold : {'Sold'}</p>
+                    <h5 className="text-gray-900 text-xl font-medium mb-2">{cloth?.name}</h5>
+                    <p className="text-gray-700 text-base mb-4">{cloth?.description}</p>
+                    <p>Stock : {cloth?.quantity}</p>
+                    <p>Supplier : {cloth?.supplierName}</p>
+                    <p>id : {cloth?._id}</p>
+                    <p>Sold : {cloth?.sold}</p>
                     <div className='flex justify-between pr-3'>
-                        <h3 className="text-2xl font-semibold">$590.20</h3>
-                        <button type="button" class="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Delivered</button>
+                        <h3 className="text-2xl font-semibold">${cloth?.price}</h3>
+                        <button
+
+                            type="button"
+                            class="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                        >Delivered</button>
                     </div>
 
                 </div>

@@ -23,7 +23,7 @@ function App() {
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/myItems' element={<MyItems></MyItems>}></Route>
         <Route path='/manageItems' element={<ManageItems></ManageItems>}></Route>
-        <Route path='/inventoryDetails' element={<InventoryDetails></InventoryDetails>}></Route>
+        <Route path='/inventoryDetails/:id' element={<InventoryDetails></InventoryDetails>}></Route>
       </Routes>
       <Footer></Footer>
     </div>

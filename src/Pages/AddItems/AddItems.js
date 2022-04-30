@@ -108,15 +108,16 @@ const AddItems = () => {
                                 </div>
                                 <div className="w-5/12">
                                     <label htmlFor="company-website" className="block text-sm font-medium text-gray-700">
-                                        Quantity
+                                        Stock
                                     </label>
                                     <div className="mt-1 flex rounded-md shadow-sm">
                                         <input
                                             type="number"
+
                                             name="quantity"
                                             id="quantity"
                                             className="focus:ring-indigo-500 px-5 py-1 focus:border-indigo-500 flex-1 block w-full  rounded-md border sm:text-sm border-gray-200"
-                                            placeholder="Enter Quantity"
+                                            placeholder="Enter Stock"
                                         />
                                     </div>
                                 </div>
