@@ -1,9 +1,9 @@
 import React from 'react';
-import slider1 from '../../../img/pexels-artem-beliaikin-2376190.jpg'
-import slider2 from '../../../img/pexels-artem-beliaikin-2447042.jpg'
-import slider3 from '../../../img/pexels-artem-beliaikin-2556295.jpg'
-import slider4 from '../../../img/pexels-artem-beliaikin-2578033.jpg'
-import slider5 from '../../../img/pexels-artem-beliaikin-2613322.jpg'
+import slider1 from '../../../img/banner1.jpg'
+import slider2 from '../../../img/banner2.jpg'
+import slider3 from '../../../img/banner3.jpg'
+import slider4 from '../../../img/banner4.jpg'
+import slider5 from '../../../img/banner5.jpg'
 // Import Swiper styles
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -24,7 +24,7 @@ const Slider = () => {
                 spaceBetween={30}
                 centeredSlides={true}
                 autoplay={{
-                    delay: 2500,
+                    delay: 3500,
                     disableOnInteraction: false,
                 }}
                 pagination={{

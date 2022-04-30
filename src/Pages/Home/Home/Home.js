@@ -12,7 +12,6 @@ const Home = () => {
             setLoading(false)
         }
     }, [cloths])
-    // console.log(cloths);
     if (loadin) {
         return <Loader></Loader>
     }
