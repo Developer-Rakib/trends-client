@@ -10,11 +10,13 @@ import Blogs from './Pages/Blogs/Blogs';
 import MyItems from './Pages/MyItems/MyItems';
 import ManageItems from './Pages/ManageItems/ManageItems';
 import InventoryDetails from './Pages/InventoryDetails/InventoryDetails';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
     <div className="App">
       <Header></Header>
+      <Toaster></Toaster>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>

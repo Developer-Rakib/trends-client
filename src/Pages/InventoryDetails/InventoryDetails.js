@@ -1,19 +1,23 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { MdOutlineAddCircle } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
+import Loader from '../Loader/Loader';
 
 const InventoryDetails = () => {
     const { id } = useParams();
     const [cloth, setCloth] = useState({});
-    const [stock, setStock] = useState(0);
-    // const [udatedCloth, setUpdetedCloth] = useState({});
+    const [loading, setLoading] = useState(true);
     // console.log(id);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const quantity = e.target.stock.value;
-        // setStock(quantity)
+        if (parseInt(quantity) < 0) {
+            toast.error("Nagative value not Allow")
+            return;
+        }
         const updateCloth = {
             name: cloth?.name,
             email: "",
@@ -30,9 +34,8 @@ const InventoryDetails = () => {
     }
 
     const handleDeliver = () => {
-        // setStock(stock + 1)
         if (parseInt(cloth?.quantity) < 1) {
-
+            toast.error("Nagative value not Allow")
             return;
         }
         let quantity = parseInt(cloth?.quantity) - 1;
@@ -46,8 +49,7 @@ const InventoryDetails = () => {
             supplierName: cloth?.supplierName,
             sold: `${quantity < 1 ? "sold out" : "sold"}`
         }
-        console.log(lessStock);
-
+        // console.log(lessStock);
         setCloth(lessStock)
     }
 
@@ -57,10 +59,8 @@ const InventoryDetails = () => {
         axios.get(`http://localhost:5000/cloth/${id}`)
             .then(data => {
                 setCloth(data.data);
-                setStock(parseInt(data.data.quantity))
             })
     }, [])
-
 
     const { _id, ...rest } = cloth;
     useEffect(() => {
@@ -71,7 +71,14 @@ const InventoryDetails = () => {
     }, [id, rest])
 
     // console.log(rest);
-
+    useEffect(() => {
+        if (Object.keys(cloth).length > 0) {
+            setLoading(false)
+        }
+    }, [cloth])
+    if (loading) {
+        return <Loader></Loader>
+    }
 
     return (
         <div className="flex justify-evenly py-20 container mx-auto">

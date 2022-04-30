@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { MdDelete } from 'react-icons/md';
 import useCloths from '../../Hooks/useCloths';
+import Loader from '../Loader/Loader';
 
 const ManageItems = () => {
     let [cloths, setCloths] = useCloths();
+    let [loadin, setLoading] = useState(true);
+    useEffect(() => {
+        if (cloths.length > 0) {
+            setLoading(false)
+        }
+    }, [cloths])
+    // console.log(cloths);
+    if (loadin) {
+        return <Loader></Loader>
+    }
     return (
         <div>
             <div className="relative w-10/12  mx-auto my-5 overflow-x-auto shadow-md sm:rounded-lg">
