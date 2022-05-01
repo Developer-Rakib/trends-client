@@ -82,7 +82,7 @@ const SignUp = () => {
         return <Loader></Loader>;
     }
     return (
-        <div style={{ backgroundColor: "rgb(249 250 251", height: '80vh' }} className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div style={{ backgroundColor: "rgb(249 250 251" }} className=" flex items-center justify-center pt-5 pb-12 sm:py-16 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full ">
                 <div>
                     <img
@@ -90,7 +90,7 @@ const SignUp = () => {
                         src={logo2}
                         alt="Workflow"
                     />
-                    <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Create your account</h2>
+                    <h2 className="mt-2 text-center text-3xl font-extrabold text-gray-900">Create your account</h2>
                 </div>
                 <form onSubmit={handleSubmit} className="mt-8 space-y-6" >
                     <div className="rounded-md shadow-sm -space-y-px">

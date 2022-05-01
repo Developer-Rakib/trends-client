@@ -5,7 +5,7 @@ const Footer = () => {
     let year = new Date().getFullYear();
     // console.log(date.getFullYear);
     return (
-        <footer className="text-center lg:text-left bg-gray-100 text-gray-600">
+        <footer className="text-left bg-gray-100 text-gray-600">
             <div className="flex justify-center items-center lg:justify-between p-6 border-b border-gray-300">
                 <div className="mr-12 hidden lg:block">
                     <span>Get connected with us on social networks:</span>
@@ -169,7 +169,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="text-center p-6 bg-gray-200">
-                <span> &copy; {year} Copyright:</span>
+                <span> &copy; {year} Copyright: </span>
                 <a target={"_blank"} className="text-gray-600 font-semibold" href="https://github.com/Developer-Rakib">Developer Rakib</a>
             </div>
         </footer>

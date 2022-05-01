@@ -60,7 +60,7 @@ const Login = () => {
         return <Loader></Loader>;
     }
     return (
-        <div style={{ backgroundColor: "rgb(249 250 251", height: '80vh' }} className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div style={{ backgroundColor: "rgb(249 250 251", }} className="min-h-full flex items-center justify-center pt-5 pb-12 sm:py-16 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full ">
                 <div>
                     <img
@@ -68,7 +68,7 @@ const Login = () => {
                         src={logo3}
                         alt="Workflow"
                     />
-                    <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
+                    <h2 className="mt-3 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
                 </div>
                 <form onSubmit={handleLogin} className="mt-8 space-y-6" >
                     <input type="hidden" name="remember" defaultValue="true" />
