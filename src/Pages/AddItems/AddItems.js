@@ -3,15 +3,16 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
 const AddItems = () => {
-    // let [user] = useAuthState(auth)
-    // console.log(user.email);
+    const [user, loading, error] = useAuthState(auth);
+
+
     return (
         <div className='w-10/12 mx-auto my-28'>
             <form action="#" method="POST">
                 <div className="shadow sm:rounded-md sm:overflow-hidden">
                     <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
-                        <div className='flex justify-evenly'>
-                            <div className="w-5/12">
+                        <div className='sm:flex justify-evenly'>
+                            <div className="w-full  sm:py-0 py-2 sm:w-5/12">
                                 <label htmlFor="company-website" className="block text-sm font-medium text-gray-700">
                                     Name
                                 </label>
@@ -25,7 +26,7 @@ const AddItems = () => {
                                     />
                                 </div>
                             </div>
-                            <div className="w-5/12">
+                            <div className="w-full  sm:py-0 pt-2 sm:w-5/12">
                                 <label htmlFor="company-website" className="block text-sm font-medium text-gray-700">
                                     Email
                                 </label>
@@ -34,8 +35,9 @@ const AddItems = () => {
                                         type="email"
                                         name="email"
                                         id="email"
-                                        value={"example@gmail.com"}
+                                        value={user.email}
                                         readOnly
+                                        disabled
 
                                         className="focus:ring-indigo-500 px-5 py-1 focus:border-indigo-500 flex-1 block w-full  rounded-md border sm:text-sm border-gray-200"
                                         placeholder="Enter Email"
@@ -43,8 +45,8 @@ const AddItems = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='flex justify-evenly'>
-                            <div className="w-5/12">
+                        <div className='sm:flex justify-evenly'>
+                            <div className="w-full sm:py-0 pb-2 sm:w-5/12">
                                 <label htmlFor="company-website" className="block text-sm font-medium text-gray-700">
                                     Supplier Name
                                 </label>
@@ -58,7 +60,7 @@ const AddItems = () => {
                                     />
                                 </div>
                             </div>
-                            <div className="w-5/12">
+                            <div className="w-full sm:py-0 pt-2 sm:w-5/12">
                                 <label htmlFor="company-website" className="block text-sm font-medium text-gray-700">
                                     Photo URL
                                 </label>
@@ -75,8 +77,8 @@ const AddItems = () => {
 
                         </div>
 
-                        <div className='flex justify-evenly'>
-                            <div className='w-5/12'>
+                        <div className='flex flex-col-reverse sm:flex-row justify-evenly'>
+                            <div className='w-full sm:pb-0 py-3 sm:w-5/12'>
                                 <label htmlFor="about" className="block text-sm font-medium text-gray-700">
                                     Description
                                 </label>
@@ -91,7 +93,7 @@ const AddItems = () => {
                                     />
                                 </div>
                             </div>
-                            <div className="w-5/12 flex justify-evenly flex-wrap">
+                            <div className="w-full sm:pb-0 pb-3 sm:w-5/12 flex justify-evenly flex-wrap">
                                 <div className="w-5/12">
                                     <label htmlFor="company-website" className="block text-sm font-medium text-gray-700">
                                         Price
