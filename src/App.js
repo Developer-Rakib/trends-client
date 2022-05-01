@@ -11,6 +11,7 @@ import MyItems from './Pages/MyItems/MyItems';
 import ManageItems from './Pages/ManageItems/ManageItems';
 import InventoryDetails from './Pages/InventoryDetails/InventoryDetails';
 import { Toaster } from 'react-hot-toast';
+import RequireAuth from './Pages/RequireAuth/RequireAuth';
 
 function App() {
   return (
@@ -21,11 +22,27 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/SignUp' element={<SignUp></SignUp>}></Route>
-        <Route path='/addItems' element={<AddItems></AddItems>}></Route>
+        <Route path='/addItems' element={
+          <RequireAuth>
+            <AddItems></AddItems>
+          </RequireAuth>
+        }></Route>
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
-        <Route path='/myItems' element={<MyItems></MyItems>}></Route>
-        <Route path='/manageItems' element={<ManageItems></ManageItems>}></Route>
-        <Route path='/inventoryDetails/:id' element={<InventoryDetails></InventoryDetails>}></Route>
+        <Route path='/myItems' element={
+          <RequireAuth>
+            <MyItems></MyItems>
+          </RequireAuth>
+        }></Route>
+        <Route path='/manageItems' element={
+          <RequireAuth>
+            <ManageItems></ManageItems>
+          </RequireAuth>
+        }></Route>
+        <Route path='/inventoryDetails/:id' element={
+          <RequireAuth>
+            <InventoryDetails></InventoryDetails>
+          </RequireAuth>
+        }></Route>
       </Routes>
       <Footer></Footer>
     </div>
