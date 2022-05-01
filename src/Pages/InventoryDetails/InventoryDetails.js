@@ -87,8 +87,8 @@ const InventoryDetails = () => {
     }
 
     return (
-        <div className="flex justify-evenly py-20 container mx-auto">
-            <div className="flex flex-col p-5 md:flex-row md:w-8/12  text-left rounded-lg bg-white shadow-lg">
+        <div className="flex justify-evenly flex-col-reverse sm:flex-row py-20 w-11/12 sm:container mx-auto">
+            <div className="flex flex-col p-5  sm:mt-0 mt-3 md:flex-row md:w-8/12  text-left rounded-lg bg-white shadow-lg">
                 <img className=" w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg" src={cloth?.img} alt="" />
                 <div className="p-6 flex flex-col justify-start">
                     <h5 className="text-gray-900 text-xl font-medium mb-2">{cloth?.name}</h5>
@@ -108,9 +108,9 @@ const InventoryDetails = () => {
 
                 </div>
             </div>
-            <div className='md:w-4/12'>
+            <div className='md:w-4/12 '>
 
-                <form onSubmit={handleSubmit} className="flex items-center w-10/12 mx-auto">
+                <form onSubmit={handleSubmit} className="flex items-center justify-center sm:w-10/12 w-full mx-auto">
                     <div className="relative w-52">
                         <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                             <MdOutlineAddCircle className="w-5 h-5 text-gray-500 dark:text-gray-400" >

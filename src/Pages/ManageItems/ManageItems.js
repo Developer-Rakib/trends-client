@@ -1,7 +1,9 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { MdDelete } from 'react-icons/md';
+import toast from 'react-hot-toast';
 import useCloths from '../../Hooks/useCloths';
 import Loader from '../Loader/Loader';
+import Swal from 'sweetalert2';
 
 const ManageItems = () => {
     let [cloths, setCloths] = useCloths();
@@ -11,9 +13,39 @@ const ManageItems = () => {
             setLoading(false)
         }
     }, [cloths])
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:5000/cloth/${id}`)
+                    .then(data => {
+                        if (data.data.success) {
+                            let restCloth = cloths.filter(cloth => cloth._id !== id)
+                            setCloths(restCloth)
+                            toast.success(data.data.message)
+                        }
+                    })
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        })
+
+
+    }
+
     // console.log(cloths);
     if (loadin) {
-        return <Loader></Loader>
+        return <Loader></Loader>;
     }
     return (
         <div>
@@ -42,7 +74,7 @@ const ManageItems = () => {
                         {
                             cloths.map(cloth => {
                                 return (
-                                    <tr
+                                    <tr key={cloth._id}
                                         className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                         <th scope="row" className="px-2 sm:px-5 py-3  dark:text-white whitespace-nowrap">
                                             <img className='w-10 sm:w-16' src={cloth?.img} alt="" />
@@ -54,7 +86,9 @@ const ManageItems = () => {
                                             {cloth?.supplierName}
                                         </td>
                                         <td className="px-2 sm:px-5 py-3 text-center">
-                                            <button type="button" className="inline-block px-2.5  sm:px-6 py-1.5 sm:py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
+                                            <button type="button"
+                                                onClick={() => handleDelete(cloth?._id)}
+                                                className="inline-block px-2.5  sm:px-6 py-1.5 sm:py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
                                         </td>
                                     </tr>
                                 );

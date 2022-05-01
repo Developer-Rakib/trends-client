@@ -7,7 +7,6 @@ import { MdOutlineClose } from 'react-icons/md';
 import { signOut } from 'firebase/auth';
 import toast from 'react-hot-toast';
 import { useAuthState } from 'react-firebase-hooks/auth';
-
 import auth from '../../firebase.init'
 import Loader from '../Loader/Loader';
 
