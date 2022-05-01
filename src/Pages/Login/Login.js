@@ -60,7 +60,7 @@ const Login = () => {
         return <Loader></Loader>;
     }
     return (
-        <div style={{ backgroundColor: "rgb(249 250 251", }} className="min-h-full flex items-center justify-center pt-5 pb-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+        <div style={{ backgroundColor: "rgb(249 250 251", height: "90vh" }} className="min-h-full flex items-center justify-center px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full ">
                 <div>
                     <img

@@ -1,9 +1,55 @@
 .slider-container {}
 
-.slider-container div {}
-
-.slider-container div img {
+.slider1,
+.slider2,
+.slider3,
+.slider4,
+.slider5 {
     height: 92vh;
     width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
 
 }
+
+.slider1 {
+    background-image: url(../../../img/./banner1.jpg);
+}
+
+.slider2 {
+    background-image: url(../../../img/./banner2.jpg);
+
+}
+
+.slider3 {
+    background-image: url(../../../img/./banner3.jpg);
+
+}
+
+.slider4 {
+    background-image: url(../../../img/./banner4.jpg);
+
+}
+
+.slider5 {
+    background-image: url(../../../img/./banner5.jpg);
+
+}
+
+.slider-text {
+    background-color: rgba(0, 0, 0, 0.40);
+    padding: 100px 20px;
+    width: 70%;
+    border-radius: 8px;
+}
+
+
+/* .slider img {
+    height: 92vh;
+    width: 100%;
+} */
