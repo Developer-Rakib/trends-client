@@ -1,8 +1,76 @@
-import React from 'react';
-import { Link as button, Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import toast from 'react-hot-toast';
+import { Link as button, Link, useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
 import logo3 from '../../img/images__3_-removebg-preview.png'
+import Loader from '../Loader/Loader';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Login = () => {
+    const navigate = useNavigate();
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
+
+    const handleLogin = (e) => {
+        e.preventDefault()
+        const email = e.target.email.value;
+        const pass = e.target.password.value;
+        const confirmPass = e.target.confirmPassword.value;
+        console.log(pass, confirmPass);
+
+        if (!/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(email)) {
+            toast.error("Email is not valid")
+            return;
+        }
+
+        if (pass.length < 6) {
+            toast.error("Password is to Sort")
+            return;
+        }
+        if (pass !== confirmPass) {
+            toast.error("Password is not Match")
+            return;
+        }
+        signInWithEmailAndPassword(email, pass)
+
+
+    }
+
+    useEffect(() => {
+        if (error) {
+            console.log(error.code);
+            switch (error.code) {
+                case "auth/wrong-password":
+                    toast.error('Password is Wrong!', { id: "signup" })
+                    break;
+                case "auth/too-many-requests":
+                    toast.error('Too Many Requests!', { id: "signup" })
+                    break;
+                case "auth/user-not-found":
+                    toast.error('User Not Available, Please Sign Up!', { id: "signup" })
+                    break;
+
+                default:
+                    toast.error('Somting is wrong', { id: "login" })
+                    break;
+            }
+        }
+    }, [error])
+    useEffect(() => {
+        if (user) {
+            toast.success('Login Success!', { id: "login" })
+            navigate('/')
+        }
+    }, [user])
+    if (loading) {
+        return <Loader></Loader>;
+    }
     return (
         <div style={{ backgroundColor: "rgb(249 250 251", height: '80vh' }} className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full ">
@@ -13,14 +81,8 @@ const Login = () => {
                         alt="Workflow"
                     />
                     <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
-                    {/* <p className="mt-2 text-center text-sm text-gray-600">
-                        Or{' '}
-                        <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                            start your 14-day free trial
-                        </a>
-                    </p> */}
                 </div>
-                <form className="mt-8 space-y-6" action="#" method="POST">
+                <form onSubmit={handleLogin} className="mt-8 space-y-6" >
                     <input type="hidden" name="remember" defaultValue="true" />
                     <div className="rounded-md shadow-sm -space-y-px">
                         <div>
@@ -58,10 +120,10 @@ const Login = () => {
                     <div>
                         <button
                             type="submit"
-                            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            className="flex items-center justify-center text-sm  bg-indigo-500 w-full mx-auto py-1 rounded-full text-white hover:bg-indigo-200 hover:text-black sm:text-base"
                         >
 
-                            Sign in
+                            Login
                         </button>
                     </div>
 
@@ -75,6 +137,8 @@ const Login = () => {
                         </Link>
                     </div>
                 </form>
+                <SocialLogin></SocialLogin>
+
             </div>
         </div>
     );

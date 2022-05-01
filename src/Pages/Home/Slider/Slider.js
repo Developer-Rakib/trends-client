@@ -4,6 +4,8 @@ import slider2 from '../../../img/banner2.jpg'
 import slider3 from '../../../img/banner3.jpg'
 import slider4 from '../../../img/banner4.jpg'
 import slider5 from '../../../img/banner5.jpg'
+import { Autoplay, Pagination, Navigation } from "swiper";
+
 // Import Swiper styles
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -15,7 +17,6 @@ import "swiper/css/navigation";
 import "./Slider.css";
 
 // import required modules
-import { Autoplay, Pagination, Navigation } from "swiper";
 
 const Slider = () => {
     return (

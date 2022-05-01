@@ -7,21 +7,31 @@ import { MdOutlineClose } from 'react-icons/md';
 import { signOut } from 'firebase/auth';
 import toast from 'react-hot-toast';
 import { useAuthState } from 'react-firebase-hooks/auth';
+
 import auth from '../../firebase.init'
+import Loader from '../Loader/Loader';
 
 const Header = () => {
     let [toggle, setToggle] = useState(false);
-
-    let [user] = useAuthState(auth)
+    const [user, loading, error] = useAuthState(auth);
     let navigat = useNavigate();
 
     // console.log(user);
     // console.log(user?.photoURL);
-
-
-
     const navBtnHndle = () => {
         setToggle(!toggle)
+    }
+    const handleLogout = () => {
+        signOut(auth)
+            .then(() => {
+                navigat('/login')
+                toast.success('Logout Succes!')
+            })
+
+
+    }
+    if (loading) {
+        return <Loader></Loader>
     }
     return (
         <div className='header-container'>
@@ -36,15 +46,12 @@ const Header = () => {
                     <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/addItems"}>Add Items</NavLink>
                     <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/myItems"}>My Items</NavLink>
                     <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/blogs"}>Blogs</NavLink>
-                    <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/login"}>Login</NavLink>
-                    {/* {user ?
-                        <div className="user flex items-center">
-                            <img src={user.photoURL ? user.photoURL : "https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png"} alt="" />
-                            <p>{user?.displayName}</p>
-                            <button onClick={handleLogout}>LogOut</button>
-                        </div>
+
+                    {user ?
+                        <button onClick={handleLogout} className={({ isActive }) => (isActive ? 'activeColor' : 'navLink')} >LogOut</button>
                         :
-                        <NavLink className={({ isActive }) => (isActive ? 'activeColor' : 'navLink')} to={"/login"}>Login</NavLink>} */}
+                        <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/login"}>Login</NavLink>
+                    }
                 </ul>
             </nav>
         </div>
