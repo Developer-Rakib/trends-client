@@ -2,6 +2,8 @@ import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
 
 const SocialLogin = () => {
+
+
     return (
         <div>
             <div className='flex justify-center items-center py-2'>

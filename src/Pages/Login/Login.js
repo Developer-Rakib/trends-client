@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
-import { Link as button, Link, useNavigate } from 'react-router-dom';
+import { Link as button, Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import logo3 from '../../img/images__3_-removebg-preview.png'
 import Loader from '../Loader/Loader';
@@ -9,34 +9,22 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Login = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const [
         signInWithEmailAndPassword,
         user,
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+    let from = location.state?.from?.pathname || "/";
 
 
     const handleLogin = (e) => {
+
         e.preventDefault()
         const email = e.target.email.value;
         const pass = e.target.password.value;
-        const confirmPass = e.target.confirmPassword.value;
-        console.log(pass, confirmPass);
-
-        if (!/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(email)) {
-            toast.error("Email is not valid")
-            return;
-        }
-
-        if (pass.length < 6) {
-            toast.error("Password is to Sort")
-            return;
-        }
-        if (pass !== confirmPass) {
-            toast.error("Password is not Match")
-            return;
-        }
+        // console.log(pass, confirmPass);
         signInWithEmailAndPassword(email, pass)
 
 
@@ -64,8 +52,8 @@ const Login = () => {
     }, [error])
     useEffect(() => {
         if (user) {
-            toast.success('Login Success!', { id: "login" })
-            navigate('/')
+            navigate(from, { replace: true });
+            toast.success("Login Successfull!", { id: "signin" })
         }
     }, [user])
     if (loading) {
