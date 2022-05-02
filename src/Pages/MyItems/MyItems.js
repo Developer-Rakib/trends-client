@@ -5,23 +5,37 @@ import auth from '../../firebase.init'
 import toast from 'react-hot-toast';
 import Loader from '../Loader/Loader';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+import axiosPrivate from '../../api/axiosPrivate';
 
 const MyItems = () => {
     const [myCloths, setMyCloths] = useState([])
     const [user] = useAuthState(auth)
     let [loadin, setLoading] = useState(true);
-    useEffect(() => {
-        if (myCloths.length > 0) {
-            setLoading(false)
-        }
-    }, [myCloths])
+    const navigate = useNavigate()
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/cloth?email=${user.email}`)
-            .then(data => {
-                // console.log(data);
-                setMyCloths(data.data)
-            })
+
+        try {
+            axiosPrivate.get(`http://localhost:5000/cloth?email=${user.email}`)
+                .then(data => {
+                    setMyCloths(data.data);
+                    setLoading(false);
+                })
+                .catch(error => {
+                    console.log(error.response.status);
+                    if (error.response.status === 403 || error.response.status === 401) {
+                        signOut(auth)
+                            .then(() => {
+                                navigate('/login')
+                                toast.error("Alart!! unauthorize access, You are Loged Out!");
+                            })
+                    }
+                })
+        } catch (error) {
+            console.log(error);
+        }
     }, [user.email])
     const handleDelete = (id) => {
         Swal.fire({
@@ -82,34 +96,31 @@ const MyItems = () => {
                     <tbody>
 
                         {
-                            myCloths.map(cloth => {
-                                return (
-                                    <tr key={cloth._id}
-                                        className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                        <th scope="row" className="px-2 sm:px-5 py-3  dark:text-white whitespace-nowrap">
-                                            <img className='w-10 sm:w-16' src={cloth?.img} alt="" />
-                                        </th>
-                                        <td className="px-2 sm:px-5 py-3 text-xs sm:text-sm font-semibold sm:font-bold">
-                                            {cloth?.name}
-                                        </td>
-                                        <td className="px-2 text-xs sm:text-sm  sm:px-5 py-3">
-                                            {cloth?.supplierName}
-                                        </td>
-                                        <td className="px-2 sm:px-5 py-3 text-center">
-                                            <button type="button"
-                                                onClick={() => handleDelete(cloth?._id)}
-                                                className="inline-block px-2.5  sm:px-6 py-1.5 sm:py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
-                                        </td>
-                                    </tr>
-                                );
-                            })
+                            myCloths.length > 0 ?
+                                myCloths.map(cloth => {
+                                    return (
+                                        <tr key={cloth._id}
+                                            className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                            <th scope="row" className="px-2 sm:px-5 py-3  dark:text-white whitespace-nowrap">
+                                                <img className='w-10 sm:w-16' src={cloth?.img} alt="" />
+                                            </th>
+                                            <td className="px-2 sm:px-5 py-3 text-xs sm:text-sm font-semibold sm:font-bold">
+                                                {cloth?.name}
+                                            </td>
+                                            <td className="px-2 text-xs sm:text-sm  sm:px-5 py-3">
+                                                {cloth?.supplierName}
+                                            </td>
+                                            <td className="px-2 sm:px-5 py-3 text-center">
+                                                <button type="button"
+                                                    onClick={() => handleDelete(cloth?._id)}
+                                                    className="inline-block px-2.5  sm:px-6 py-1.5 sm:py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
+                                            </td>
+                                        </tr>
+                                    );
+                                })
+                                :
+                                <p className='py-3'>Data Not Available</p>
                         }
-
-
-
-
-
-
                     </tbody>
                 </table>
             </div>

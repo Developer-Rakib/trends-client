@@ -39,6 +39,7 @@ const Reviews = () => {
                 className="mySwiper"
             >
                 <SwiperSlide>
+
                     <div className='py-4 sm:py-10'>
                         <div className='reveiw'>
                             <p className=''>Was a little nervous to order because company out of USA. But boy am I glad I did!.The clothing is true to size, fabrics are great and styles up to date and GREAT prices. Glad I took the chance, now I'm a happy returning customer.</p>

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
@@ -32,6 +33,13 @@ const SocialLogin = () => {
 
     useEffect(() => {
         if (user) {
+
+            (async () => {
+                const email = user.user.email;
+                const { data } = await axios.post('http://localhost:5000/login', { email })
+                localStorage.setItem('accessToken', data.accessToken)
+                console.log(data);
+            })()
             navigate(from, { replace: true });
             toast.success('SignUp Successfully!', { id: "social_login" })
         }
@@ -39,10 +47,12 @@ const SocialLogin = () => {
 
 
     const handleGoogleSignin = () => {
+
         signInWithGoogle()
             .then(() => {
 
             })
+
 
     }
     return (

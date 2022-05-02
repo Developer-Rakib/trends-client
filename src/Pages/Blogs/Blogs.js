@@ -1,45 +1,71 @@
 import React from 'react';
+import './Blogs.css'
+import { Fade } from "react-reveal"
+import {
+    Accordion,
+    AccordionItem,
+    AccordionItemHeading,
+    AccordionItemButton,
+    AccordionItemPanel,
+} from 'react-accessible-accordion';
+
+
 
 const Blogs = () => {
     return (
 
-        <div className='sm:w-8/12 w-10/12 mx-auto my-32  sm:my-36'>
-            <div id="accordion-flush" data-accordion="collapse" data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white" data-inactive-classes="text-gray-500 dark:text-gray-400">
-                <h2 id="accordion-flush-heading-1">
-                    <button type="button" className="flex justify-between items-center py-5 w-full font-medium  border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white" data-accordion-target="#accordion-flush-body-1" aria-expanded="true" aria-controls="accordion-flush-body-1">
-                        <span>What is Flowbite?</span>
-                        <svg data-accordion-icon="" className="w-6 h-6 rotate-180 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
-                    </button>
-                </h2>
-                <div id="accordion-flush-body-1" className="" aria-labelledby="accordion-flush-heading-1">
-                    <div className="py-5 border-b border-gray-200 dark:border-gray-700">
-                        <p className="mb-2 text-gray-500 dark:text-gray-400">Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
+        <div className=''>
 
-                    </div>
-                </div>
-                <h2 id="accordion-flush-heading-2">
-                    <button type="button" className="flex justify-between items-center py-5 w-full font-medium text-left text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400" data-accordion-target="#accordion-flush-body-2" aria-expanded="false" aria-controls="accordion-flush-body-2">
-                        <span>Is there a Figma file available?</span>
-                        <svg data-accordion-icon="" className="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
-                    </button>
-                </h2>
-                <div id="accordion-flush-body-2" className="hidden" aria-labelledby="accordion-flush-heading-2">
-                    <div className="py-5 border-b border-gray-200 dark:border-gray-700">
-                        <p className="mb-2 text-gray-500 dark:text-gray-400">Flowbite is first conceptualized and designed using the Figma software so everything you see in the library has a design equivalent in our Figma file.</p>
-                    </div>
-                </div>
-                <h2 id="accordion-flush-heading-3">
-                    <button type="button" className="flex justify-between items-center py-5 w-full font-medium text-left text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400" data-accordion-target="#accordion-flush-body-3" aria-expanded="false" aria-controls="accordion-flush-body-3">
-                        <span>What are the differences between Flowbite and Tailwind UI?</span>
-                        <svg data-accordion-icon="" className="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
-                    </button>
-                </h2>
-                <div id="accordion-flush-body-3" className="hidden" aria-labelledby="accordion-flush-heading-3">
-                    <div className="py-5 border-b border-gray-200 dark:border-gray-700">
-                        <p className="mb-2 text-gray-500 dark:text-gray-400">The main difference is that the core components from Flowbite are open source under the MIT license, whereas Tailwind UI is a paid product. Another difference is that Flowbite relies on smaller and standalone components, whereas Tailwind UI offers sections of pages.</p>
-                    </div>
-                </div>
-            </div>
+            <h2 className="text-3xl sm:text-5xl py-8">Question & Answer</h2>
+            <Accordion className='blog-contaner'>
+
+                <Fade left>
+                    <AccordionItem className='my-2'>
+                        <AccordionItemHeading className='border inline-block rounded px-5'>
+                            <AccordionItemButton>
+                                <h4 className='text-lg sm:text-2xl'>What is Context API?</h4>
+                            </AccordionItemButton>
+                        </AccordionItemHeading>
+                        <AccordionItemPanel>
+                            <p className='inline-block rounded py-'>
+                                The React Context API is a way for a React app to effectively produce global variables that can be passed around. This is the alternative to "prop drilling" or moving props from grandparent to child to parent, and so on. Context is also touted as an easier, lighter approach to state management using Redux.The Context API can be used to share data with multiple components, without having to pass data through props manually. For example, some use cases the Context API is ideal for: theming, user language, authentication, etc.
+                            </p>
+                        </AccordionItemPanel>
+                    </AccordionItem>
+                </Fade>
+
+                <Fade right>
+                    <AccordionItem className='my-2'>
+                        <AccordionItemHeading className='border inline-block rounded px-5'>
+                            <AccordionItemButton>
+                                <h4 className='text-lg sm:text-2xl'>What Is Semantic HTML Tag?</h4>
+                            </AccordionItemButton>
+                        </AccordionItemHeading>
+                        <AccordionItemPanel>
+                            <p className='inline-block rounded py-'>
+                                HTML was originally created as a markup language to describe documents on the early internet. As the internet grew and was adopted by more people, its needs changed.Where the internet was originally intended for sharing scientific documents, now people wanted to share other things as well. Very quickly, people started wanting to make the web look nicer.Because the web was not initially built to be designed, programmers used different hacks to get things laid out in different ways. Rather than using the table tag describe information using a table, programmers would use them to position other elements on a page.As the use of visually designed layouts progressed, programmers started to use a generic “non-semantic” tag like div.They would often give these elements a class or id attribute to describe their purpose.As HTML5 is still relatively new, this use of non-semantic elements is still very common on websites today.
+                            </p>
+                        </AccordionItemPanel>
+                    </AccordionItem>
+                </Fade>
+
+                <Fade left>
+                    <AccordionItem className='my-2'>
+                        <AccordionItemHeading className='border inline-block rounded px-5'>
+                            <AccordionItemButton>
+                                <h4 className='text-lg sm:text-2xl'>What is The Difference Between Inline & Inline Block Elements?</h4>
+                            </AccordionItemButton>
+                        </AccordionItemHeading>
+                        <AccordionItemPanel>
+                            <p className='inline-block rounded py-'>
+                                Inline The element doesn't start on a new line and only occupy just the width it requires. You can't set the width or height. inline-block It's formatted just like the inline element, where it doesn't start on a new line. BUT, you can set width and height values.
+                            </p>
+                        </AccordionItemPanel>
+                    </AccordionItem>
+                </Fade>
+
+
+            </Accordion>
         </div>
 
     );

@@ -29,9 +29,7 @@ const Login = () => {
         await signInWithEmailAndPassword(email, pass)
         const { data } = await axios.post('http://localhost:5000/login', { email })
         localStorage.setItem('accessToken', data.accessToken)
-        // navigate(from, { replace: true });
-        // toast.success("Login Successfull!", { id: "signin" })
-        console.log(data);
+        // console.log(data);
 
 
     }
