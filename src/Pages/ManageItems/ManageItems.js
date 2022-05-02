@@ -25,7 +25,7 @@ const ManageItems = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/cloth/${id}`)
+                axios.delete(`https://floating-coast-61520.herokuapp.com/cloth/${id}`)
                     .then(data => {
                         if (data.data.success) {
                             let restCloth = cloths.filter(cloth => cloth._id !== id)

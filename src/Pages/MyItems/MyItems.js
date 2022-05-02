@@ -18,13 +18,13 @@ const MyItems = () => {
     useEffect(() => {
 
         try {
-            axiosPrivate.get(`http://localhost:5000/cloth?email=${user.email}`)
+            axiosPrivate.get(`https://floating-coast-61520.herokuapp.com/cloth?email=${user.email}`)
                 .then(data => {
                     setMyCloths(data.data);
                     setLoading(false);
                 })
                 .catch(error => {
-                    console.log(error.response.status);
+                    console.log(error);
                     if (error.response.status === 403 || error.response.status === 401) {
                         signOut(auth)
                             .then(() => {
@@ -48,7 +48,7 @@ const MyItems = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/cloth/${id}`)
+                axios.delete(`https://floating-coast-61520.herokuapp.com/cloth/${id}`)
                     .then(data => {
                         if (data.data.success) {
                             let restCloth = myCloths.filter(cloth => cloth._id !== id)

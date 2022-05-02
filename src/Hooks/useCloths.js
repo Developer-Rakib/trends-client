@@ -4,7 +4,7 @@ import axios from 'axios'
 const useCloths = () => {
     let [cloths, setCloths] = useState([]);
     useEffect(() => {
-        axios.get("http://localhost:5000/cloths")
+        axios.get("https://floating-coast-61520.herokuapp.com/cloths")
             .then(data => setCloths(data.data))
 
     }, [])

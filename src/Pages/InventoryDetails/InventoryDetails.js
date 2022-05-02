@@ -34,7 +34,7 @@ const InventoryDetails = () => {
             sold: `${quantity < 1 ? "sold out" : "sold"}`
         }
         setCloth(updateCloth)
-        axios.put(`http://localhost:5000/cloth/${id}`, updateCloth)
+        axios.put(`https://floating-coast-61520.herokuapp.com/cloth/${id}`, updateCloth)
             .then(data => {
                 if (data.data.modifiedCount === 1) {
                     toast.success(`${newStock} Items Stocked Successfully`)
@@ -64,7 +64,7 @@ const InventoryDetails = () => {
         }
         // console.log(lessStock);
         setCloth(lessStock)
-        axios.put(`http://localhost:5000/cloth/${id}`, lessStock)
+        axios.put(`https://floating-coast-61520.herokuapp.com/cloth/${id}`, lessStock)
             .then(data => {
                 // console.log(data.data);
                 if (data.data.modifiedCount === 1) {
@@ -80,7 +80,7 @@ const InventoryDetails = () => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/cloth/${id}`)
+        axios.get(`https://floating-coast-61520.herokuapp.com/cloth/${id}`)
             .then(data => {
                 setCloth(data.data);
             })
