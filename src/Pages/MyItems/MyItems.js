@@ -19,7 +19,7 @@ const MyItems = () => {
     useEffect(() => {
         axios.get(`http://localhost:5000/cloth?email=${user.email}`)
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setMyCloths(data.data)
             })
     }, [user.email])

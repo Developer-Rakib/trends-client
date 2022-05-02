@@ -13,12 +13,13 @@ const InventoryDetails = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const quantity = e.target.stock.value;
-        if (isNaN(quantity)) {
+        const newStock = parseInt(e.target.stock.value)
+        const quantity = parseInt(cloth?.quantity) + newStock;
+        if (isNaN(newStock)) {
             toast.error("Enter Valid Input")
             return;
         }
-        if (parseInt(quantity) < 0) {
+        if (parseInt(newStock) < 0) {
             toast.error("Nagative value not Allow")
             return;
         }
@@ -33,13 +34,19 @@ const InventoryDetails = () => {
             sold: `${quantity < 1 ? "sold out" : "sold"}`
         }
         setCloth(updateCloth)
-
+        axios.put(`http://localhost:5000/cloth/${id}`, updateCloth)
+            .then(data => {
+                if (data.data.modifiedCount === 1) {
+                    toast.success(`${newStock} Items Stocked Successfully`)
+                }
+                else {
+                    toast.error("Somthing is Wrong")
+                }
+            })
         e.target.reset()
     }
 
     const handleDeliver = () => {
-
-
         if (parseInt(cloth?.quantity) < 1) {
             toast.error("Nagative value not Allow")
             return;
@@ -57,6 +64,17 @@ const InventoryDetails = () => {
         }
         // console.log(lessStock);
         setCloth(lessStock)
+        axios.put(`http://localhost:5000/cloth/${id}`, lessStock)
+            .then(data => {
+                // console.log(data.data);
+                if (data.data.modifiedCount === 1) {
+                    toast.success("1 Items Delivered!")
+                }
+                else {
+                    toast.error("Somthing is Wrong")
+                }
+            })
+
     }
 
 
@@ -66,15 +84,18 @@ const InventoryDetails = () => {
             .then(data => {
                 setCloth(data.data);
             })
-    }, [])
+    }, [id])
 
-    const { _id, ...rest } = cloth;
-    useEffect(() => {
-        (async () => {
-            const { data } = await axios.put(`http://localhost:5000/cloth/${id}`, rest)
-            // console.log(data);
-        })()
-    }, [id, rest])
+    // const { _id, ...rest } = cloth;
+    // useEffect(() => {
+    //     (async () => {
+    //         const { data } = await 
+    //         if (data.success) {
+    //             console.log(data);
+    //             toast.success(data.message)
+    //         }
+    //     })()
+    // }, [id, rest])
 
     // console.log(rest);
     useEffect(() => {
@@ -131,14 +152,12 @@ const InventoryDetails = () => {
                             value={"Add Stock"}
                         />
                     </form>
-
                 </div>
-
             </div>
             <div className='text-right py-5 w-10/12  mx-auto'>
                 <Link to={"/manageItems"} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     Manage Inventory
-                    <svg class="w-4 h-4 ml-2 -mr-1 " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    <svg className="w-4 h-4 ml-2 -mr-1 " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
                 </Link>
             </div>
         </>

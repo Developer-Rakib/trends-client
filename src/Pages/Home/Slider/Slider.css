@@ -53,3 +53,10 @@
     height: 92vh;
     width: 100%;
 } */
+@media screen and (max-width:600px) {
+    .slider-text {
+        padding: 36px 15px;
+        width: 78%;
+        border-radius: 8px;
+    }
+}

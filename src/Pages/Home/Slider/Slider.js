@@ -1,11 +1,6 @@
 import React from 'react';
 import { Autoplay, Pagination, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import slider1 from '../../../img/banner1.jpg'
-import slider2 from '../../../img/banner2.jpg'
-import slider3 from '../../../img/banner3.jpg'
-import slider4 from '../../../img/banner4.jpg'
-import slider5 from '../../../img/banner5.jpg'
 import "./Slider.css";
 // Import Swiper styles
 import "swiper/css";
