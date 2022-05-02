@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { MdOutlineAddCircle } from 'react-icons/md';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Loader from '../Loader/Loader';
 
 const InventoryDetails = () => {
@@ -87,52 +87,61 @@ const InventoryDetails = () => {
     }
 
     return (
-        <div className="flex justify-evenly flex-col-reverse sm:flex-row py-20 w-11/12 sm:container mx-auto">
-            <div className="flex flex-col p-5  sm:mt-0 mt-3 md:flex-row md:w-8/12  text-left rounded-lg bg-white shadow-lg">
-                <img className=" w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg" src={cloth?.img} alt="" />
-                <div className="p-6 flex flex-col justify-start">
-                    <h5 className="text-gray-900 text-xl font-medium mb-2">{cloth?.name}</h5>
-                    <p className="text-gray-700 text-base mb-4">{cloth?.description}</p>
-                    <p>Stock : {cloth?.quantity}</p>
-                    <p>Supplier : {cloth?.supplierName}</p>
-                    <p>id : {id}</p>
-                    <p>Sold : {cloth?.sold}</p>
-                    <div className='flex justify-between pr-3'>
-                        <h3 className="text-2xl font-semibold">${cloth?.price}</h3>
-                        <button
-                            onClick={handleDeliver}
-                            type="button"
-                            className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                        >Delivered</button>
+        <>
+            <div className="flex justify-evenly flex-col-reverse sm:flex-row pt-20 w-11/12 sm:container mx-auto">
+                <div className="flex flex-col p-5  sm:mt-0 mt-3 md:flex-row md:w-8/12  text-left rounded-lg bg-white shadow-lg">
+                    <img className=" w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg" src={cloth?.img} alt="" />
+                    <div className="p-6 flex flex-col justify-start">
+                        <h5 className="text-gray-900 text-xl font-medium mb-2">{cloth?.name}</h5>
+                        <p className="text-gray-700 text-base mb-4">{cloth?.description}</p>
+                        <p>Stock : {cloth?.quantity}</p>
+                        <p>Supplier : {cloth?.supplierName}</p>
+                        <p>id : {id}</p>
+                        <p>Sold : {cloth?.sold}</p>
+                        <div className='flex justify-between pr-3'>
+                            <h3 className="text-2xl font-semibold">${cloth?.price}</h3>
+                            <button
+                                onClick={handleDeliver}
+                                type="button"
+                                className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                            >Delivered</button>
+                        </div>
+
                     </div>
-
                 </div>
-            </div>
-            <div className='md:w-4/12 '>
+                <div className='md:w-4/12 '>
 
-                <form onSubmit={handleSubmit} className="flex items-center justify-center sm:w-10/12 w-full mx-auto">
-                    <div className="relative w-52">
-                        <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                            <MdOutlineAddCircle className="w-5 h-5 text-gray-500 dark:text-gray-400" >
-                            </MdOutlineAddCircle>
+                    <form onSubmit={handleSubmit} className="flex items-center justify-center sm:w-10/12 w-full mx-auto">
+                        <div className="relative w-52">
+                            <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                                <MdOutlineAddCircle className="w-5 h-5 text-gray-500 dark:text-gray-400" >
+                                </MdOutlineAddCircle>
+                            </div>
+                            <input
+                                type="text"
+                                name='stock'
+                                id="simple-search"
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md w-full focus:ring-blue-500 focus:border-blue-500 block  pl-10 px-2 py-2  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Add Stock"
+                                required />
                         </div>
                         <input
-                            type="text"
-                            name='stock'
-                            id="simple-search"
-                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md w-full focus:ring-blue-500 focus:border-blue-500 block  pl-10 px-2 py-2  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Add Stock"
-                            required />
-                    </div>
-                    <input
-                        type="submit"
-                        className="inline-block px-6 py-3 ml-2 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                        value={"Add Stock"}
-                    />
-                </form>
+                            type="submit"
+                            className="inline-block px-6 py-3 ml-2 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                            value={"Add Stock"}
+                        />
+                    </form>
+
+                </div>
 
             </div>
-        </div>
+            <div className='text-right py-5 w-10/12  mx-auto'>
+                <Link to={"/manageItems"} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Manage Inventory
+                    <svg class="w-4 h-4 ml-2 -mr-1 " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </Link>
+            </div>
+        </>
     );
 };
 
