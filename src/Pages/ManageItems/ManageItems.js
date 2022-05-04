@@ -39,13 +39,12 @@ const ManageItems = () => {
                     'Your file has been deleted.',
                     'success'
                 )
-            }
-        })
+            };
+        });
 
 
-    }
+    };
 
-    // console.log(cloths);
     if (loadin) {
         return <Loader></Loader>;
     }
