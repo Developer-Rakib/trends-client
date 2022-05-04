@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     let year = new Date().getFullYear();
-    // console.log(date.getFullYear);
     return (
         <footer className="text-left bg-gray-100 text-gray-600">
             <Fade bottom>

@@ -67,7 +67,6 @@ const InventoryDetails = () => {
         setCloth(lessStock)
         axios.put(`https://floating-coast-61520.herokuapp.com/cloth/${id}`, lessStock)
             .then(data => {
-                // console.log(data.data);
                 if (data.data.modifiedCount === 1) {
                     toast.success("1 Items Delivered!")
                 }
@@ -77,8 +76,6 @@ const InventoryDetails = () => {
             })
 
     }
-
-
 
     useEffect(() => {
         axios.get(`https://floating-coast-61520.herokuapp.com/cloth/${id}`)

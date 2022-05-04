@@ -1,14 +1,12 @@
 import React from 'react';
 import { Autoplay, Pagination, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Fade } from 'react-reveal';
 import "./Slider.css";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Fade } from 'react-reveal';
-
-
 
 const Slider = () => {
     return (
