@@ -1,10 +1,17 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 import { Fade } from 'react-reveal';
 import fillup from '../../img/IMG_20220504_191746-removebg-preview.png';
 
 const Contact = () => {
+
+    const handleSend = (e) => {
+        e.preventDefault()
+        toast.success('Send Successful!')
+        e.target.reset()
+    }
     return (
-        <div>
+        <div >
             <h1 className="text-3xl sm:text-4xl inline-block px-4 border-b-4 border-cyan-600 mt-10 mb-8">Contact Us</h1>
 
             <div className='flex container sm:flex-row flex-col-reverse mx-auto mb-16'>
@@ -12,7 +19,7 @@ const Contact = () => {
                     <div className='sm:w-5/12 w-11/12 px-5 sm:px-10 sm:mx-10 mx-auto mt-20'>
                         <img className='sm:h-20 h-16 sm:mx-0 mx-auto' src={fillup} alt="" />
 
-                        <form className="mt-8 space-y-6">
+                        <form onSubmit={handleSend} className="mt-8 space-y-6">
                             <div className="rounded-md shadow-sm -space-y-px">
 
                                 <div>
@@ -39,7 +46,7 @@ const Contact = () => {
                                         autoComplete="email"
                                         required
                                         className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                                        placeholder="Email address"
+                                        placeholder="Email"
                                     />
                                 </div>
                                 <div>

@@ -1,4 +1,9 @@
-.header-container {}
+.header-container {
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+
+}
+
 
 .header-container nav {
     background: rgb(65, 64, 66);

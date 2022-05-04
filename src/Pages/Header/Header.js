@@ -50,7 +50,7 @@ const Header = () => {
                     <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/blogs"}>Blogs</NavLink>
 
                     {user ?
-                        <button onClick={handleLogout} className='text-left w-4/6 sm:w-4 sm:mx-0 mx-auto ' >LogOut</button>
+                        <button onClick={handleLogout} className='uppercase text-left w-4/6 sm:w-auto sm:mx-0 mx-auto sm:pb-0.5' >LogOut</button>
                         :
                         <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/login"}>Login</NavLink>
                     }
