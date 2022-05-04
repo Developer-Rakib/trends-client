@@ -1,7 +1,6 @@
 .review-containe .swiper {
     width: 100%;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-bottom: 15px;
 }
 
 .review-containe .swiper-slide {

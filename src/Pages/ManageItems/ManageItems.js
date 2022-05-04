@@ -5,6 +5,7 @@ import useCloths from '../../Hooks/useCloths';
 import Loader from '../Loader/Loader';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+import { Fade } from 'react-reveal';
 
 const ManageItems = () => {
     let [cloths, setCloths] = useCloths();
@@ -81,23 +82,25 @@ const ManageItems = () => {
                         {
                             cloths.map(cloth => {
                                 return (
-                                    <tr key={cloth._id}
-                                        className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                        <th scope="row" className="px-2 sm:px-5 py-3  dark:text-white whitespace-nowrap">
-                                            <img className='w-10 sm:w-16' src={cloth?.img} alt="" />
-                                        </th>
-                                        <td className="px-2 sm:px-5 py-3 text-xs sm:text-sm font-semibold sm:font-bold">
-                                            {cloth?.name}
-                                        </td>
-                                        <td className="px-2 text-xs sm:text-sm  sm:px-5 py-3">
-                                            {cloth?.supplierName}
-                                        </td>
-                                        <td className="px-2 sm:px-5 py-3 text-center">
-                                            <button type="button"
-                                                onClick={() => handleDelete(cloth?._id)}
-                                                className="inline-block px-2.5  sm:px-6 py-1.5 sm:py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
-                                        </td>
-                                    </tr>
+                                    <Fade>
+                                        <tr key={cloth._id}
+                                            className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                            <th scope="row" className="px-2 sm:px-5 py-3  dark:text-white whitespace-nowrap">
+                                                <img className='w-10 sm:w-16' src={cloth?.img} alt="" />
+                                            </th>
+                                            <td className="px-2 sm:px-5 py-3 text-xs sm:text-sm font-semibold sm:font-bold">
+                                                {cloth?.name}
+                                            </td>
+                                            <td className="px-2 text-xs sm:text-sm  sm:px-5 py-3">
+                                                {cloth?.supplierName}
+                                            </td>
+                                            <td className="px-2 sm:px-5 py-3 text-center">
+                                                <button type="button"
+                                                    onClick={() => handleDelete(cloth?._id)}
+                                                    className="inline-block px-2.5  sm:px-6 py-1.5 sm:py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
+                                            </td>
+                                        </tr>
+                                    </Fade>
                                 );
                             })
                         }

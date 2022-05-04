@@ -15,3 +15,22 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
 }
+
+@media (max-width:600px) {
+    .inventory-container img {
+        height: 200px;
+        margin-top: 15px;
+    }
+
+    .inventory-container p {
+        font-size: 14px;
+    }
+
+    .inventory-container {
+        width: 300px;
+    }
+
+    .inventory-container h5 {
+        font-size: 22px;
+    }
+}

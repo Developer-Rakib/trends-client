@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useCloths from '../../../Hooks/useCloths';
+import Contact from '../../Contact/Contact';
 import InventoryItems from '../../InventoryItems/InventoryItems';
 import Loader from '../../Loader/Loader';
 import Reviews from '../../Reviews/Reviews';
@@ -20,7 +21,8 @@ const Home = () => {
     return (
         <div>
             <Slider></Slider>
-            <div className='flex justify-evenly flex-wrap'>
+            <h1 className="text-4xl inline-block px-4 border-b-4 border-sky-500 mt-10">Inventory</h1>
+            <div className='flex justify-evenly flex-wrap '>
                 {
                     cloths.slice(0, 6).map(cloth => <InventoryItems
                         key={cloth._id}
@@ -35,7 +37,9 @@ const Home = () => {
                 </Link>
             </div>
 
+            <h1 className="text-4xl inline-block px-4 border-b-4 border-sky-500 mt-10">Reviews</h1>
             <Reviews></Reviews>
+            <Contact></Contact>
 
         </div>
     );

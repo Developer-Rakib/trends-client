@@ -49,7 +49,7 @@ const Blogs = () => {
                     </AccordionItem>
                 </Fade>
 
-                <Fade left>
+                <Fade bottom>
                     <AccordionItem className='my-2'>
                         <AccordionItemHeading className='border inline-block rounded px-5'>
                             <AccordionItemButton>

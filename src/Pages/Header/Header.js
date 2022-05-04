@@ -34,11 +34,11 @@ const Header = () => {
     return (
         <div className='header-container'>
             <nav
-                className='flex  justify-start items-start  sm:justify-between py-2 sm:px-32 px-5 sm:items-center text-white'
+                className='flex  justify-start items-start  sm:justify-between py-3 sm:px-32 px-5 sm:items-center text-white'
             >
-                <img className='sm:w-48 w-36' src={logo} alt="" />
-                <span onClick={navBtnHndle} className='sm:hidden absolute right-6  top-[18px]'>{toggle ? <MdOutlineClose></MdOutlineClose> : <GoThreeBars></GoThreeBars>}</span>
-                <ul onClick={navBtnHndle} className={`flex flex-col z-10 justify-end  sm:flex-row absolute  sm:relative sm:opacity-100 sm:top-0 top-12  right-0 sm:bg-inherit w-1/2 sm:w-full  py-4 sm:py-0 duration-500 ease-out ${toggle ? "w-1/2 opacity-100" : "w-0 opacity-0"}`}>
+                <img className='sm:w-48 w-40' src={logo} alt="" />
+                <span onClick={navBtnHndle} className='sm:hidden absolute right-6  top-[22px]'>{toggle ? <MdOutlineClose></MdOutlineClose> : <GoThreeBars></GoThreeBars>}</span>
+                <ul onClick={navBtnHndle} className={`flex flex-col z-10 justify-end  sm:flex-row absolute  sm:relative sm:opacity-100 sm:top-0 top-12  right-0 sm:bg-inherit  sm:w-full  py-4 sm:py-0 duration-500 ease-out ${toggle ? "w-3/5 opacity-100" : "w-0 opacity-0"}`}>
                     <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/"}>Home</NavLink>
                     {
                         user && <>

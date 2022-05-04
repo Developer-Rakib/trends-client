@@ -6,6 +6,7 @@ import Loader from '../Loader/Loader';
 import toast from 'react-hot-toast';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import axios from 'axios';
 
 
 
@@ -21,7 +22,7 @@ const SignUp = () => {
 
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         const email = e.target.email.value;
         const pass = e.target.password.value;
@@ -41,8 +42,9 @@ const SignUp = () => {
             toast.error("Password is not Match")
             return;
         }
-        createUserWithEmailAndPassword(email, pass)
-
+        await createUserWithEmailAndPassword(email, pass)
+        const { data } = await axios.post('https://floating-coast-61520.herokuapp.com/login', { email })
+        localStorage.setItem('accessToken', data.accessToken)
 
     }
     const handleEmail = (e) => {
