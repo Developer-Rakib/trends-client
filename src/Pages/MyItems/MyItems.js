@@ -30,7 +30,12 @@ const MyItems = () => {
                         signOut(auth)
                             .then(() => {
                                 navigate('/login')
-                                toast.error("Alert!! unauthorize access, You are Loged Out!", { id: 'unauthorize' });
+                                if (error.response.status === 403) {
+                                    toast.error("Alert! Your Login Token is expire, Please login Again!", { id: 'unauthorize' });
+                                }
+                                else {
+                                    toast.error("Alert!! unauthorize access, You are Loged Out!", { id: 'unauthorize' });
+                                }
 
                             })
                     }
@@ -69,13 +74,12 @@ const MyItems = () => {
 
     }
 
-    // console.log(cloths);
     if (loadin) {
         return <Loader></Loader>
     }
     return (
         <div>
-            <div className="relative w-10/12  mx-auto my-5 overflow-x-auto shadow-md sm:rounded-lg">
+            <div className="relative w-10/12  mx-auto my-7 overflow-x-auto shadow-md sm:rounded-lg">
 
                 <table className="w-full text-sm text-center text-gray-500 dark:text-gray-400">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
