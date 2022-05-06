@@ -105,8 +105,8 @@ const MyItems = () => {
                             myCloths.length > 0 ?
                                 myCloths.map(cloth => {
                                     return (
-                                        <Fade top>
-                                            <tr key={cloth._id}
+                                        <Fade top key={cloth._id}>
+                                            <tr
                                                 className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                                 <th scope="row" className="px-2 sm:px-5 py-3  dark:text-white whitespace-nowrap">
                                                     <img className='w-10 sm:w-16' src={cloth?.img} alt="" />
