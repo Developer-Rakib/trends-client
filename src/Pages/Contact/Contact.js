@@ -89,7 +89,7 @@ const Contact = () => {
                 </Fade>
                 <Fade left>
                     <div className='sm:w-6/12 w-11/12 sm:mx-0 mx-auto'>
-                        <iframe className='w-11/12 mx-auto' style={{ height: "480px" }} title='New York, NY 10012, US' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.27991381485!2d-74.25987514580468!3d40.697670063772776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1651668427604!5m2!1sen!2sbd" width="800" height="600" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe className='w-11/12 mx-auto' style={{ height: "480px" }} title='New York, NY 10012, US' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12094.570694745582!2d-74.01509343340905!3d40.72588202808459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25988b96f8647%3A0x523992653a20942d!2sNew%20York%2C%20NY%2010012%2C%20USA!5e0!3m2!1sen!2sbd!4v1651843076436!5m2!1sen!2sbd" width="800" height="600" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </Fade>
             </div>

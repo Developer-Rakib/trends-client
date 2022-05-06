@@ -7,7 +7,7 @@ import auth from '../../firebase.init';
 import Loader from '../Loader/Loader';
 
 const AddItems = () => {
-    const [user, loading, error] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -58,6 +58,7 @@ const AddItems = () => {
                                             id="name"
                                             className="focus:ring-indigo-500 px-5 py-1 focus:border-indigo-500 flex-1 block w-full  rounded-md border sm:text-sm border-gray-200"
                                             placeholder="Enter Name"
+                                            required
                                         />
                                     </div>
                                 </div>
@@ -73,9 +74,9 @@ const AddItems = () => {
                                             value={user.email}
                                             readOnly
                                             disabled
-
                                             className="focus:ring-indigo-500 px-5 py-1 focus:border-indigo-500 flex-1 block w-full  rounded-md border sm:text-sm border-gray-200"
                                             placeholder="Enter Email"
+                                            required
                                         />
                                     </div>
                                 </div>
@@ -92,6 +93,7 @@ const AddItems = () => {
                                             id="supplierName"
                                             className="focus:ring-indigo-500 px-5 py-1 focus:border-indigo-500 flex-1 block w-full  rounded-md border sm:text-sm border-gray-200"
                                             placeholder="Enter Supplier Name"
+                                            required
                                         />
                                     </div>
                                 </div>
@@ -106,6 +108,7 @@ const AddItems = () => {
                                             id="imgURL"
                                             className="focus:ring-indigo-500 px-5 py-1 focus:border-indigo-500 flex-1 block w-full  rounded-md border sm:text-sm border-gray-200"
                                             placeholder="Enter Photo URL"
+                                            required
                                         />
                                     </div>
                                 </div>
@@ -125,6 +128,7 @@ const AddItems = () => {
                                             className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block p-2 w-full sm:text-sm border border-gray-300 rounded-md"
                                             placeholder="Enter Description"
                                             defaultValue={''}
+                                            required
                                         />
                                     </div>
                                 </div>
@@ -140,6 +144,7 @@ const AddItems = () => {
                                                 id="price"
                                                 className="focus:ring-indigo-500 px-5 py-1 focus:border-indigo-500 flex-1 block w-full  rounded-md border sm:text-sm border-gray-200"
                                                 placeholder="Enter Price"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -154,6 +159,7 @@ const AddItems = () => {
                                                 id="quantity"
                                                 className="focus:ring-indigo-500 px-5 py-1 focus:border-indigo-500 flex-1 block w-full  rounded-md border sm:text-sm border-gray-200"
                                                 placeholder="Enter Stock"
+                                                required
                                             />
                                         </div>
                                     </div>
