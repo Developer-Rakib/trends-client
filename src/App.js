@@ -12,6 +12,7 @@ import ManageItems from './Pages/ManageItems/ManageItems';
 import InventoryDetails from './Pages/InventoryDetails/InventoryDetails';
 import { Toaster } from 'react-hot-toast';
 import RequireAuth from './Pages/RequireAuth/RequireAuth';
+import NotFound from './Pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
             <InventoryDetails></InventoryDetails>
           </RequireAuth>
         }></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
