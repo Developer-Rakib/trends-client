@@ -1,15 +1,17 @@
 import axios from 'axios';
-import React, { useEffect } from 'react';
+import { sendPasswordResetEmail } from 'firebase/auth';
+import React, { useEffect, useState } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
 import { Bounce } from 'react-reveal';
-import { Link as button, Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import logo3 from '../../img/images__3_-removebg-preview.png'
 import Loader from '../Loader/Loader';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Login = () => {
+    const [email, setEmail] = useState('')
     const navigate = useNavigate();
     const location = useLocation();
     const [
@@ -30,7 +32,35 @@ const Login = () => {
         await signInWithEmailAndPassword(email, pass)
         const { data } = await axios.post('https://floating-coast-61520.herokuapp.com/login', { email })
         localStorage.setItem('accessToken', data.accessToken)
-        // console.log(data);
+
+    }
+
+
+    const handleForgetPass = () => {
+
+
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                toast.success('Mail Sent!', { id: "signup" })
+            })
+            .catch((error) => {
+                console.log(error.code);
+                const errorCode = error.code;
+
+                if (errorCode === "auth/invalid-email") {
+                    toast.error('This Email is not Valid!', { id: "signup" })
+
+                }
+                if (errorCode === "auth/missing-email") {
+                    toast.error('Please Enter Email', { id: "signup" })
+
+                }
+                if (errorCode === "auth/user-not-found") {
+                    toast.error('User not With This Email. Please SignUp', { id: "signup" })
+
+                }
+
+            });
 
 
     }
@@ -64,6 +94,7 @@ const Login = () => {
     if (loading) {
         return <Loader></Loader>;
     }
+
     return (
         <div style={{ backgroundColor: "rgb(249 250 251", height: "90vh" }} className="min-h-full flex items-center justify-center px-4 sm:px-6 lg:px-8">
             <Bounce top>
@@ -84,6 +115,7 @@ const Login = () => {
                                     Email address
                                 </label>
                                 <input
+                                    onBlur={e => setEmail(e.target.value)}
                                     id="email-address"
                                     name="email"
                                     type="email"
@@ -121,16 +153,17 @@ const Login = () => {
                             </button>
                         </div>
 
-                        <div className="text-sm ">
-                            <button className="font-medium text-indigo-600 hover:text-indigo-500">
-                                Forgot Password? <span>Click here</span>
-                            </button>
-                            <br />
-                            <Link to={'/signUp'} className="font-medium text-indigo-600 hover:text-indigo-500">
-                                Create Account? <span>Sign up</span>
-                            </Link>
-                        </div>
+
                     </form>
+                    <div className="text-sm mt-2">
+                        <button onClick={handleForgetPass} className="font-medium text-indigo-600 hover:text-indigo-500">
+                            Forgot Password? <span>Click here</span>
+                        </button>
+                        <br />
+                        <Link to={'/signUp'} className="font-medium text-indigo-600 hover:text-indigo-500">
+                            Create Account? <span>Sign up</span>
+                        </Link>
+                    </div>
                     <SocialLogin></SocialLogin>
 
                 </div>

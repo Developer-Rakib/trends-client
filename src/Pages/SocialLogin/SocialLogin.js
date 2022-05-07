@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import Loader from '../Loader/Loader';
 
 const SocialLogin = () => {
 
@@ -41,7 +42,7 @@ const SocialLogin = () => {
                 console.log(data);
             })()
             navigate(from, { replace: true });
-            toast.success('SignUp Successfully!', { id: "social_login" })
+            toast.success('Login with google Successfully!', { id: "social_login" })
         }
     }, [user])
 
@@ -54,6 +55,9 @@ const SocialLogin = () => {
             })
 
 
+    }
+    if (loading) {
+        return <Loader></Loader>
     }
     return (
         <div>

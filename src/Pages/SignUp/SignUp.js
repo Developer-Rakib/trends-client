@@ -18,7 +18,7 @@ const SignUp = () => {
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
 
 
@@ -28,7 +28,7 @@ const SignUp = () => {
         const email = e.target.email.value;
         const pass = e.target.password.value;
         const confirmPass = e.target.confirmPassword.value;
-        console.log(pass, confirmPass);
+        // console.log(pass, confirmPass);
 
         if (!/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(email)) {
             toast.error("Email is not valid")
