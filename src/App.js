@@ -16,10 +16,8 @@ import RequireAuth from './Pages/RequireAuth/RequireAuth';
 function App() {
   return (
     <div className="App">
+      <Toaster ></Toaster>
       <Header></Header>
-      <div className='overflow-x-hidden'>
-        <Toaster></Toaster>
-      </div>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>

@@ -94,13 +94,13 @@ const Footer = () => {
                             <h6 className="uppercase font-semibold mb-4 flex justify-center md:justify-start">
                                 Products
                             </h6>
-                            <p className="mb-4">
+                            <p className="mb-2 sm:mb-4">
                                 <Link to="/" className="text-gray-600">MEN</Link>
                             </p>
-                            <p className="mb-4">
+                            <p className="mb-2 sm:mb-4">
                                 <Link to="/" className="text-gray-600">WOMEN</Link>
                             </p>
-                            <p className="mb-4">
+                            <p className="mb-2 sm:mb-4">
                                 <Link to="/" className="text-gray-600">KIDS</Link>
                             </p>
                             <p>
@@ -108,16 +108,16 @@ const Footer = () => {
                             </p>
                         </div>
                         <div className="">
-                            <h6 className="uppercase font-semibold mb-4 flex justify-center md:justify-start">
+                            <h6 className="uppercase font-semibold m-3 sm:mb-4 flex justify-center md:justify-start">
                                 Useful links
                             </h6>
-                            <p className="mb-4">
+                            <p className="sm:mb-4 mb-2">
                                 <Link to="manageItems" className="text-gray-600">Manage items</Link>
                             </p>
-                            <p className="mb-4">
+                            <p className="sm:mb-4 mb-2">
                                 <Link to="addItems" className="text-gray-600">Add items</Link>
                             </p>
-                            <p className="mb-4">
+                            <p className="sm:mb-4 mb-2">
                                 <Link to="myItems" className="text-gray-600">My items</Link>
                             </p>
                             <p>
@@ -125,10 +125,10 @@ const Footer = () => {
                             </p>
                         </div>
                         <div className="">
-                            <h6 className="uppercase font-semibold mb-4 flex justify-center md:justify-start">
+                            <h6 className="uppercase font-semibold mb-3 sm:mb-4 flex justify-center md:justify-start">
                                 Contact
                             </h6>
-                            <p className="flex items-center justify-center md:justify-start mb-4">
+                            <p className="flex items-center justify-center md:justify-start mb-2 sm:mb-4">
                                 <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="home"
                                     className="w-4 mr-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                                     <path fill="currentColor"
@@ -137,7 +137,7 @@ const Footer = () => {
                                 </svg>
                                 New York, NY 10012, US
                             </p>
-                            <p className="flex items-center justify-center md:justify-start mb-4">
+                            <p className="flex items-center justify-center md:justify-start mb-2 sm:mb-4">
                                 <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="envelope"
                                     className="w-4 mr-4" role="img" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 512 512">
@@ -147,7 +147,7 @@ const Footer = () => {
                                 </svg>
                                 tajulislam601@gmail.com
                             </p>
-                            <p className="flex items-center justify-center md:justify-start mb-4">
+                            <p className="flex items-center justify-center md:justify-start mb-2 sm:mb-4">
                                 <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="phone"
                                     className="w-4 mr-4" role="img" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 512 512">
