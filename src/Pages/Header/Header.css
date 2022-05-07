@@ -4,12 +4,10 @@
 
 }
 
-
 .header-container nav {
     background: rgb(65, 64, 66);
 }
 
-.header-container nav img {}
 
 .header-container nav ul {
     background: rgb(65, 64, 66);
@@ -24,12 +22,12 @@
 }
 
 
-.navLink {}
-
 .activeLink {
     border-bottom: 2px solid white;
 }
 
+
+/* responsive  */
 @media (max-width:850px) {
     .header-container nav ul a {
         padding: 0px 0px;

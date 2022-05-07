@@ -12,22 +12,22 @@ import Loader from '../Loader/Loader';
 
 const Header = () => {
     let [toggle, setToggle] = useState(false);
-    const [user, loading, error] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
     let navigat = useNavigate();
 
     // console.log(user);
     const navBtnHndle = () => {
         setToggle(!toggle)
     }
+
     const handleLogout = () => {
         signOut(auth)
             .then(() => {
                 navigat('/login')
                 toast.success('Logout Succes!')
             })
-
-
     }
+
     if (loading) {
         return <Loader></Loader>
     }

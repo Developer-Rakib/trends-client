@@ -15,6 +15,8 @@ const MyItems = () => {
     const [user] = useAuthState(auth)
     let [loadin, setLoading] = useState(true);
     const navigate = useNavigate()
+    window.scroll(0, 10)
+
 
     useEffect(() => {
 

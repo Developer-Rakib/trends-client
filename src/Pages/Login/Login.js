@@ -22,23 +22,20 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
     let from = location.state?.from?.pathname || "/";
 
-
+    // handle login 
     const handleLogin = async (e) => {
-
         e.preventDefault()
         const email = e.target.email.value;
         const pass = e.target.password.value;
 
         await signInWithEmailAndPassword(email, pass)
+        // get token and set in localStorage
         const { data } = await axios.post('https://floating-coast-61520.herokuapp.com/login', { email })
         localStorage.setItem('accessToken', data.accessToken)
-
     }
 
-
+    // handle forget password
     const handleForgetPass = () => {
-
-
         sendPasswordResetEmail(auth, email)
             .then(() => {
                 toast.success('Mail Sent!', { id: "signup" })

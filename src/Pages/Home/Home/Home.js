@@ -8,7 +8,7 @@ import Reviews from '../../Reviews/Reviews';
 import Slider from '../Slider/Slider';
 
 const Home = () => {
-    let [cloths, setCloths] = useCloths();
+    let [cloths] = useCloths();
     let [loadin, setLoading] = useState(true);
     useEffect(() => {
         if (cloths.length > 0) {
@@ -20,7 +20,10 @@ const Home = () => {
     }
     return (
         <div>
+            {/* slider  section*/}
             <Slider></Slider>
+
+            {/* InventoryItems  section*/}
             <h1 className="text-4xl inline-block px-4 border-b-4 border-sky-500 mt-10">Inventory</h1>
             <div className='flex justify-evenly flex-wrap '>
                 {
@@ -37,8 +40,11 @@ const Home = () => {
                 </Link>
             </div>
 
+            {/* reviews section  */}
             <h1 className="text-4xl inline-block px-4 border-b-4 border-sky-500 mt-10">Reviews</h1>
             <Reviews></Reviews>
+
+            {/* contact section  */}
             <Contact></Contact>
 
         </div>

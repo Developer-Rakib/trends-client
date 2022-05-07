@@ -12,7 +12,7 @@ const InventoryDetails = () => {
     const [loading, setLoading] = useState(true);
     // console.log(id);
 
-    const handleSubmit = (e) => {
+    const handleAddStock = (e) => {
         e.preventDefault();
         const newStock = parseInt(e.target.stock.value)
         const quantity = parseInt(cloth?.quantity) + newStock;
@@ -121,7 +121,7 @@ const InventoryDetails = () => {
                 <Fade left>
                     <div className='md:w-4/12 '>
 
-                        <form onSubmit={handleSubmit} className="flex items-center justify-center sm:w-10/12 w-full mx-auto">
+                        <form onSubmit={handleAddStock} className="flex items-center justify-center sm:w-10/12 w-full mx-auto">
                             <div className="relative w-52">
                                 <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                                     <MdOutlineAddCircle className="w-5 h-5 text-gray-500 dark:text-gray-400" >

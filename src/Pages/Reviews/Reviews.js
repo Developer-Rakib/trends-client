@@ -1,17 +1,16 @@
 import React from 'react';
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Zoom } from 'react-reveal';
+import "./Reviews..css";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
-import "./Reviews..css";
 
 // import required modules
 import { EffectCoverflow, Autoplay, Pagination, } from "swiper";
-import { Zoom } from 'react-reveal';
 
 
 const Reviews = () => {
@@ -19,7 +18,6 @@ const Reviews = () => {
         <Zoom>
             <div className='w-10/12 mx-auto review-containe'>
                 <Swiper
-                    // effect={"coverflow"}
                     grabCursor={true}
                     centeredSlides={true}
                     slidesPerView={"auto"}

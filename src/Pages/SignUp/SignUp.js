@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo2 from '../../img/images__3_-removebg-preview.png'
 import SocialLogin from '../SocialLogin/SocialLogin';
 import Loader from '../Loader/Loader';
@@ -8,8 +8,6 @@ import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import axios from 'axios';
 import { Bounce } from 'react-reveal';
-
-
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -21,14 +19,12 @@ const SignUp = () => {
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
 
-
-
+    // handle sign up 
     const handleSubmit = async (e) => {
         e.preventDefault()
         const email = e.target.email.value;
         const pass = e.target.password.value;
         const confirmPass = e.target.confirmPassword.value;
-        // console.log(pass, confirmPass);
 
         if (!/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(email)) {
             toast.error("Email is not valid")
@@ -58,6 +54,8 @@ const SignUp = () => {
             toast.error("Password is to Sort")
         }
     }
+
+    // handle error 
     useEffect(() => {
         if (error) {
             console.log(error.code);
@@ -75,12 +73,14 @@ const SignUp = () => {
             }
         }
     }, [error])
+
     useEffect(() => {
         if (user) {
             toast.success('SignUp Successfully!', { id: "signup" })
             navigate('/')
         }
     }, [user])
+
     if (loading) {
         return <Loader></Loader>;
     }

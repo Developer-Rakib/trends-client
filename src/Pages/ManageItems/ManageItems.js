@@ -10,11 +10,14 @@ import { Fade } from 'react-reveal';
 const ManageItems = () => {
     let [cloths, setCloths] = useCloths();
     let [loadin, setLoading] = useState(true);
+    window.scroll(0, 10)
     useEffect(() => {
         if (cloths.length > 0) {
             setLoading(false)
         }
     }, [cloths])
+
+    // handle delete
     const handleDelete = (id) => {
         Swal.fire({
             title: 'Are you sure?',
@@ -41,8 +44,6 @@ const ManageItems = () => {
                 )
             };
         });
-
-
     };
 
     if (loadin) {
