@@ -23,7 +23,7 @@ and Used to create this project:
 
 ## Backend
 The crude operation is carried out at the backend with the node's popular framework express, which includes get, put, update, delete.
-### Backend code link :  [https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-Developer-Rakib](https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-Developer-Rakib) 
+### Backend code link :  [https://github.com/Developer-Rakib/trends-client](https://github.com/Developer-Rakib/trends-client)
 
 
 
