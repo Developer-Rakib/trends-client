@@ -21,7 +21,7 @@ const MyItems = () => {
     useEffect(() => {
 
         try {
-            axiosPrivate.get(`https://floating-coast-61520.herokuapp.com/cloth?email=${user.email}`)
+            axiosPrivate.get(`https://trends-c4kb.onrender.com/cloth?email=${user.email}`)
                 .then(data => {
                     setMyCloths(data.data);
                     setLoading(false);
@@ -57,7 +57,7 @@ const MyItems = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`https://floating-coast-61520.herokuapp.com/cloth/${id}`)
+                axios.delete(`https://trends-c4kb.onrender.com/cloth/${id}`)
                     .then(data => {
                         if (data.data.success) {
                             let restCloth = myCloths.filter(cloth => cloth._id !== id)

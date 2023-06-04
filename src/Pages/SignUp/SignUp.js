@@ -40,7 +40,7 @@ const SignUp = () => {
             return;
         }
         await createUserWithEmailAndPassword(email, pass)
-        const { data } = await axios.post('https://floating-coast-61520.herokuapp.com/login', { email })
+        const { data } = await axios.post('https://trends-c4kb.onrender.com/login', { email })
         localStorage.setItem('accessToken', data.accessToken)
 
     }

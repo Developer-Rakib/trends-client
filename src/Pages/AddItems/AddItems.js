@@ -29,7 +29,7 @@ const AddItems = () => {
             sold: `${quantity < 1 ? "sold out" : "sold"}`
         }
         // console.log(clothingInfo);
-        axios.post('https://floating-coast-61520.herokuapp.com/cloths', clothingInfo)
+        axios.post('https://trends-c4kb.onrender.com/cloths', clothingInfo)
             .then(data => {
                 if (data.data.success) {
                     toast.success(data.data.message)

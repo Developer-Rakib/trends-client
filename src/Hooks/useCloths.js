@@ -4,7 +4,7 @@ import axios from 'axios'
 const useCloths = () => {
     let [cloths, setCloths] = useState([]);
     useEffect(() => {
-        axios.get("https://floating-coast-61520.herokuapp.com/cloths")
+        axios.get("https://trends-c4kb.onrender.com/cloths")
             .then(data => setCloths(data.data))
 
     }, [])
